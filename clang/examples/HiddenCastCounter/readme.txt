@@ -4,12 +4,12 @@ HiddenCastCounter - который ищет преобразование нея�
 Анализирует AST-дерево, находит скрытые преобразования между базовыми встроенными типами и выводит агрегированную стату по каждой функции
 
 ## Как собрать
-
-cmake llvm -DCLANG_BUILD_EXAMPLES=ON 
+mkdir build && cd build
+cmake ../llvm -DLLVM_ENABLE_PROJECTS="clang" -DCLANG_BUILD_EXAMPLES=ON
 make HiddenCastCounter
 
-## Как запустить
-llvm-project/build/bin/HiddenCastCounter  path/to/your/file --  
+## Как запустить (из билда)
+./bin/HiddenCastCounter path/to/your/file --
 
-## Как запустить тесты
-./bin/llvm-lit -v tools/clang/test/HiddenCastCounter/     
+## Как запустить тесты (из билда)
+./bin/llvm-lit -v ../tools/clang/test/HiddenCastCounter/
