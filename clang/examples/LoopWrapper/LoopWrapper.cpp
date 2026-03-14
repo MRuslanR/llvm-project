@@ -23,8 +23,8 @@ public:
     virtual void run(const MatchFinder::MatchResult &Result) override {
         const Stmt *LoopNode = Result.Nodes.getNodeAs<Stmt>("loop");
         if (LoopNode) {
-            // Вставляем loop_start() перед циклом
-            TheRewriter.InsertText(LoopNode->getBeginLoc(), "loop_start();\n", true, true);
+            // Вставляем loop_start() и { перед циклом
+            TheRewriter.InsertText(LoopNode->getBeginLoc(), "{\nloop_start();\n", true, true);
 
             // Ищем конец цикла, чтобы вставить loop_end()
             SourceLocation EndLoc = LoopNode->getEndLoc();
@@ -36,8 +36,8 @@ public:
                     InsertLoc = Lexer::getLocForEndOfToken(NextTok->getLocation(), 0, *Result.SourceManager, Result.Context->getLangOpts());
                 }
             }
-
-            TheRewriter.InsertText(InsertLoc, "\nloop_end();", true, true);
+            // Вставляем nloop_end() и } после цикла
+            TheRewriter.InsertText(InsertLoc, "\nloop_end();\n}", true, true);
         }
     }
 };
