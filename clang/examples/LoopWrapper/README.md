@@ -12,4 +12,4 @@ bin/LoopWrapper path/to/your_file --
 
 ## Как запустить тесты (из билда)
 (если нужно, то `make clang FileCheck`)
-./bin/llvm-lit -v ../clang/test/HiddenCastCounter/
+./bin/llvm-lit -v ../clang/test/LoopWrapper/
