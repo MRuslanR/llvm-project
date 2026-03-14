@@ -13,4 +13,4 @@ bin/LoopWrapper path/to/your_file --
 ## Как запустить тесты (из билда)
 из билда:
 make FileCheck (если не сбилдена)
-./bin/llvm-lit -v ../clang/test/LoopWrapper/
+./bin/llvm-lit -v ../tools/clang/test/LoopWrapper/
